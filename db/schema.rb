@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_16_231112) do
   enable_extension "plpgsql"
 
   create_table "inventories", force: :cascade do |t|
-    t.bigint "party_id", null: false
+    t.bigint "party_id", default: 1, null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -25,19 +25,23 @@ ActiveRecord::Schema.define(version: 2020_10_16_231112) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "item_name"
-    t.string "description"
-    t.integer "price"
-    t.boolean "magical"
-    t.integer "weight"
+    t.boolean "plot", default: false
+    t.boolean "magical", default: false
+    t.string "itemName", default: ""
+    t.string "description", default: ""
+    t.string "holder", default: ""
+    t.string "category", default: "unsorted"
+    t.integer "price", default: 0
+    t.integer "weight", default: 0
+    t.integer "quantity", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parties", force: :cascade do |t|
-    t.string "party_name"
-    t.integer "roses"
-    t.integer "electrum"
+    t.string "party_name", default: "The Party"
+    t.integer "roses", default: 100
+    t.integer "electrum", default: 250
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

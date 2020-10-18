@@ -1,28 +1,28 @@
 class PartiesController < ApplicationController
     
     def index
-        @Parties = party.all
-        render json: @Parties
+        @parties = Party.all
+        render json: @parties
     end
 
     def show 
-        @party = party.find(params[:id])
+        @party = Party.find(params[:id])
         render json: @party
     end
 
     def create
-        @party = party.create(party_params)
+        @party = Party.create(party_params)
         render json: @party
     end
 
     def update
-        @party = party.find(params[:id])
+        @party = Party.find(params[:id])
         @party.update(party_params)
         render json: @party
     end
     
     def destroy 
-        @party = party.find(params[:id])
+        @party = Party.find(params[:id])
         @party.destroy
         render json: @party
     end

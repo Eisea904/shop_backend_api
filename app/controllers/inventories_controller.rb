@@ -1,28 +1,28 @@
 class InventoriesController < ApplicationController
     
     def index
-        @Inventories = inventory.all
-        render json: @Inventories
+        @inventories = Inventory.all
+        render json: @inventories
     end
 
     def show 
-        @inventory = inventory.find(params[:id])
+        @inventory = Inventory.find(params[:id])
         render json: @inventory
     end
 
     def create
-        @inventory = inventory.create(inventory_params)
+        @inventory = Inventory.create(inventory_params)
         render json: @inventory
     end
 
     def update
-        @inventory = inventory.find(params[:id])
+        @inventory = Inventory.find(params[:id])
         @inventory.update(inventory_params)
         render json: @inventory
     end
     
     def destroy 
-        @inventory = inventory.find(params[:id])
+        @inventory = Inventory.find(params[:id])
         @inventory.destroy
         render json: @inventory
     end
